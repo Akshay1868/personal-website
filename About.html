@@ -282,21 +282,19 @@ document.addEventListener("DOMContentLoaded", function () {
     </script>
 
         </script>
-    <section class="book-carousel">
-        <h2>My Personal Book Recommendations</h2>
-        <div class="carousel">
-            <!-- Each book is a div with a background image (book cover) -->
-            <div class="book" style="background-image: url('/assets/images/books/12Week.jpg') ;"></div>
-            <div class="book" style="background-image: url('/assets/images/books/RichDad.jpg');"></div>
-            <div class="book" style="background-image: url('/assets/images/books/Monk.jpg');"></div>
-            <div class="book" style="background-image: url('/assets/images/books/EasyWay.jpg');"></div>
-            <div class="book" style="background-image: url('/assets/images/books/NoExcuses.jpg');"></div>
-            <div class="book" style="background-image: url('/assets/images/books/WIn.jpg');"></div>
-            <div class="book" style="background-image: url('/assets/images/books/Atomic.jpg');"></div>
-
-            <!-- Add more books as needed -->
-        </div>
-    </section>
+        <section class="book-carousel">
+    <h2>My Personal Book Recommendations</h2>
+    <div class="carousel">
+        <div class="book book-12Week"></div>
+        <div class="book book-RichDad"></div>
+        <div class="book book-Monk"></div>
+        <div class="book book-EasyWay"></div>
+        <div class="book book-NoExcuses"></div>
+        <div class="book book-WIn"></div>
+        <div class="book book-Atomic"></div>
+        <!-- Add more books as needed -->
+    </div>
+</section>
     <script>
         gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });
         gsap.from(".hero .image", { opacity: 0, scale: 6.5, duration: 1, ease: "elastic.out(1, 0.5)", delay: 1.0 });

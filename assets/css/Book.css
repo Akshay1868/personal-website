@@ -39,3 +39,53 @@
     margin-bottom: 20px;
     color: white  ;
 }
+
+
+
+/* The book carousel section */
+.book-carousel {
+    margin: 50px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.book-carousel h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Flex container to hold the books horizontally */
+.carousel {
+    display: flex; /* Align books horizontally */
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+/* Styling for each book */
+.book {
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: center;
+}
+
+.book:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Vercel-proof background images using classes */
+.book-12Week { background-image: url('/assets/images/books/12Week.jpg'); }
+.book-RichDad { background-image: url('/assets/images/books/RichDad.jpg'); }
+.book-Monk { background-image: url('/assets/images/books/Monk.jpg'); }
+.book-EasyWay { background-image: url('/assets/images/books/EasyWay.jpg'); }
+.book-NoExcuses { background-image: url('/assets/images/books/NoExcuses.jpg'); }
+.book-WIn { background-image: url('/assets/images/books/WIn.jpg'); }
+.book-Atomic { background-image: url('/assets/images/books/Atomic.jpg'); }
