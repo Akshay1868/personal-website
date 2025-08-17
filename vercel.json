@@ -1,8 +1,6 @@
 {
-    "rewrites": [
-      { "source": "/about", "destination": "/about.html" },
-      { "source": "/contact", "destination": "/contact.html" },
-      { "source": "/projects", "destination": "/projects.html" }
-      { "source": "/Home", "destination": "/home.html" }
+    "version": 2,
+    "routes": [
+      { "src": "/(.*)", "dest": "/$1.html" }
     ]
   }
