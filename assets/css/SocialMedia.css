@@ -7,13 +7,14 @@
     margin: 0 10px;
     transition: transform 0.3s ease-in-out;
 }
-
 .social-icons img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
+    width: 32px;   /* or 24px if you want smaller */
+    height: 32px;  /* keeps them square */
+    object-fit: contain; /* keeps proportions */
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+  }
 .social-icons a:hover {
     transform: scale(1.1);
 }
