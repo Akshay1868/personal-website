@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Balance Sheet</title>
+  <style>
+    :root {
+      --main-bg: #f9f9fb;
+      --card-bg: #ffffff;
+      --primary: #3b82f6;
+      --text-color: #333;
+      --border-radius: 12px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--main-bg);
+      color: var(--text-color);
+    }
+    header {
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      margin: 0.5rem 0 0.25rem;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    canvas {
+      width: 100% !important;
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>My Balance Sheet</header>
+  <div class="container">
+    <div class="card">
+      <h2>Assets</h2>
+      <label>Bank Balance</label>
+      <input type="number" id="bank" />
+      <label>Investments</label>
+      <input type="number" id="investments" />
+    </div>
+
+    <div class="card">
+      <h2>Liabilities</h2>
+      <label>Loans</label>
+      <input type="number" id="loans" />
+      <label>Credit Card Debt</label>
+      <input type="number" id="credit" />
+    </div>
+
+    <button onclick="updateChart()">Update Chart</button>
+
+    <div class="card">
+      <h2>Assets vs Liabilities</h2>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById("pieChart").getContext("2d");
+    let pieChart;
+
+    function updateChart() {
+      const assets = parseFloat(document.getElementById("bank").value || 0) +
+                     parseFloat(document.getElementById("investments").value || 0);
+      const liabilities = parseFloat(document.getElementById("loans").value || 0) +
+                          parseFloat(document.getElementById("credit").value || 0);
+
+      const data = {
+        labels: ["Assets", "Liabilities"],
+        datasets: [{
+          data: [assets, liabilities],
+          backgroundColor: ["#10b981", "#ef4444"],
+        }],
+      };
+
+      if (pieChart) pieChart.destroy();
+
+      pieChart = new Chart(ctx, {
+        type: "pie",
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      });
+    }
+  </script>
+
+  <!-- Chart.js from CDN (still pure JS) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Terminal Resume</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: monospace;
+            padding: 20px;
+        }
+        #terminal {
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+            border: 2px solid green;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        #input {
+            background: black;
+            color: green;
+            border: none;
+            font-family: monospace;
+            width: 100%;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hacker Terminal Resume</h1>
+    <div id="terminal">Welcome to my interactive resume! Type 'help' to see available commands.
+</div>
+    <input type="text" id="input" autofocus>
+
+    <script>
+        const terminal = document.getElementById("terminal");
+        const input = document.getElementById("input");
+        
+        const commands = {
+            "help": "Available commands: ls, cd experience, cat skills, cat projects, clear",
+            "ls": "experience/  skills  projects",
+            "cd experience": "Experience:
+  - Project Engineer (2015-2017)
+  - Senior Project Engineer (2017-2019)
+  - Tech Lead (2019-2024)
+  - Senior Consultant (2024-Present)",
+            "cat skills": "Skills:
+  - JavaScript, Python, C++
+  - Web Development (HTML, CSS, React)
+  - Machine Learning & AI
+  - Cloud Computing (AWS, Azure)",
+            "cat projects": "Projects:
+  - AI Chatbot (2023)
+  - Blockchain Voting System (2022)
+  - Portfolio Website (2021)",
+            "clear": ""
+        };
+
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                const command = input.value.trim().toLowerCase();
+                let output = commands[command] || `Command not found: ${command}`;
+                if (command === "clear") {
+                    terminal.innerHTML = "";
+                } else {
+                    terminal.innerHTML += `\n$ ${command}\n${output}\n`;
+                }
+                input.value = "";
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>

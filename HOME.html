@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshay Emula | Portfolio</title>
+    <!--<link rel="stylesheet" href="assets/css/myWebsite.css"> -->
+	<link rel="stylesheet" href="assets/css/nav.css">
+	<link rel="stylesheet" href="assets/css/home.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+	    <script>
+        document.addEventListener("scroll", function() {
+            let header = document.querySelector(".header-container img");
+            let scrollPosition = window.scrollY;
+            let scaleValue = Math.max(0.5, 1 - scrollPosition / 500);
+            header.style.transform = `scale(${scaleValue})`;
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+           <!-- <div class="logo">Akshay Emula</div> -->
+			<a href="Home.html" class="logo">Akshay Emula</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <!--<li><a href="MyTravel.html">MyTravel</a></li>
+                <li><a href="contact.html">Contact</a></li>-->
+            </ul>
+        </nav>
+		    <div id="particles-js"></div> <!-- Particle Effect Background -->
+        <div class="hero-content">
+            <div class="text">
+                <!--<h1>Hello, I'm <span class="highlight">Akshay</span></h1>
+                <p class="subtext">A passionate developer crafting elegant web experiences.</p>
+				<a href="projects.html" class="btn">View My Work</a -->
+            </div>
+			   <div id="three-container"></div> <!-- 3D Animation Container -->
+            <!--<div class="image">
+                <img src="assets/images/me/4.jpg" alt="Akshay" class="profile-img">
+            </div> -->
+        </div>
+<div class="hero">
+    <div class="hero-content">
+        <h1 class="typing-text"></h1> 
+    </div>
+</div>
+    </header>
+
+    <script>
+        gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });
+    </script>
+    <script>
+        gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });
+        gsap.from(".hero .image", { opacity: 0, scale: 6.5, duration: 1, ease: "elastic.out(1, 0.5)", delay: 1.9 });
+    </script>
+	 <script src="assets/js/home.js"></script>
+	    <script>
+        window.addEventListener('scroll', function() {
+            var header = document.querySelector('.header-container');
+            var content = document.querySelector('.content-section');
+            if (window.scrollY > 100) {
+                header.classList.add('shrink');
+                content.classList.add('visible');
+            } else {
+                header.classList.remove('shrink');
+                content.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

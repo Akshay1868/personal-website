@@ -1,0 +1,45 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+    background: #f8f8f8;
+    text-align: left;
+}
+
+header a {
+    text-decoration: none;
+    color: #e3000f;
+    font-weight: bold;
+}
+
+.case-study-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.case-study-text {
+    max-width: 50%;
+}
+
+.case-study-text h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.case-study-text p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.case-study-image img {
+    max-width: 90%;
+    height: auto;
+}

@@ -1,0 +1,66 @@
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left, links to right */
+    align-items: center;
+    padding: 10px 30px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Add hover effect */
+.logo:hover {
+    color: #007bff; /* Highlight effect */
+    transform: scale(1.05);
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+/* Navigation Links */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}

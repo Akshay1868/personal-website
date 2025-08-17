@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix-Style Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .carousel {
+            width: 80%;
+            margin: auto;
+        }
+        .episode {
+            position: relative;
+            width: 200px;
+            cursor: pointer;
+        }
+        .episode img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .episode-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .skip-intro {
+            display: block;
+            margin: 20px auto;
+            background: red;
+            padding: 10px 20px;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">My Netflix-Style Resume</div>
+    <button class="skip-intro">Skip Intro</button>
+    <div class="carousel">
+        <div class="episode" data-job="Project Engineer - 2015">
+            <img src="https://via.placeholder.com/200" alt="Episode 1">
+            <div class="episode-title">Project Engineer (2015)</div>
+        </div>
+        <div class="episode" data-job="Senior Project Engineer - 2017">
+            <img src="https://via.placeholder.com/200" alt="Episode 2">
+            <div class="episode-title">Senior Project Engineer (2017)</div>
+        </div>
+        <div class="episode" data-job="Tech Lead - 2019">
+            <img src="https://via.placeholder.com/200" alt="Episode 3">
+            <div class="episode-title">Tech Lead (2019)</div>
+        </div>
+        <div class="episode" data-job="Senior Consultant - 2024">
+            <img src="https://via.placeholder.com/200" alt="Episode 4">
+            <div class="episode-title">Senior Consultant (2024)</div>
+        </div>
+    </div>
+    <div class="popup" id="jobPopup">
+        <span class="close-btn">&times;</span>
+        <h2 id="jobTitle"></h2>
+        <p>Details about the role go here...</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true
+            });
+            $('.episode').click(function(){
+                let jobTitle = $(this).data('job');
+                $('#jobTitle').text(jobTitle);
+                $('#jobPopup').fadeIn();
+            });
+            $('.close-btn').click(function(){
+                $('#jobPopup').fadeOut();
+            });
+            $('.skip-intro').click(function(){
+                alert('Skipping intro to key skills!');
+            });
+        });
+    </script>
+</body>
+</html>

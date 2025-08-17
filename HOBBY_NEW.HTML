@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hobby Herald</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            background: url('assets/images/newspaper.jpg'); /* Old newspaper texture */
+            font-family: 'Special Elite', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .newspaper-container {
+            perspective: 800px; /* Adds depth */
+        }
+        .newspaper {
+            width: 850px;
+            background: #fdfdf5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+            transform-origin: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
+        .headline {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .subhead {
+            font-style: italic;
+            font-size: 1rem;
+            color: #777;
+        }
+        .article {
+            margin: 20px 0;
+            padding: 10px;
+            border-bottom: 1px dashed #555;
+            display: flex;
+            align-items: center;
+        }
+        .article img {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+        .headline-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        .text {
+            font-size: 1rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="newspaper-container">
+        <div class="newspaper" id="newspaper">
+            <h1>📰 The Hobby Herald</h1>
+            <p class="subhead"><i>Tuesday, March 19, 2024</i></p>
+            <p class="headline">"A Passionate Life in Motion!"</p>
+            <p class="subhead">From stadium cheers to coding victories, an inside look at a multi-talented enthusiast.</p>
+            <img src="assets/images/nheader.jpg" width="100%" alt="Newspaper Header">
+            
+            <div class="article">
+                <img src="assets/images/stadium-bg.jpg" alt="Cricket">
+                <div>
+                    <p class="headline-text">🏏 Cricket: The Greatest Game</p>
+                    <p class="text">For as long as he can remember, cricket has been more than just a game—it's been a **way of life**.</p>
+                </div>
+            </div>
+
+            <div class="article">
+                <img src="assets/images/book.jpg" alt="Reading">
+                <div>
+                    <p class="headline-text">📖 A Newfound Love for Books</p>
+                    <p class="text">Books provide a **fresh perspective**, turning pages like never before.</p>
+                </div>
+            </div>
+
+            <div class="article">
+                <img src="assets/images/coding.jpg" alt="Coding">
+                <div>
+                    <p class="headline-text">💻 A Coder's Playground</p>
+                    <p class="text">Every error is a puzzle, every program is a creation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function realisticWindEffect() {
+            gsap.to("#newspaper", {
+        y: "random(-5, 5)", 
+        rotateX: "random(-3, 3)",
+        rotateY: "random(-3, 3)",
+        duration: 2, 
+        ease: "sine.inOut", 
+        repeat: -1,
+        yoyo: true
+    });
+        }
+
+        realisticWindEffect();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AKSHAY EMULA - Balance Sheet</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      margin: 0; padding: 0; background: #f9f9fb; color: #333;
+      display: flex; height: 100vh;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background: #1f2a40;
+      color: white;
+      padding: 1rem;
+      transition: left 0.3s ease-in-out;
+      z-index: 999;
+      overflow-y: auto;
+      border-right: 2px solid #007bff;
+    }
+
+    .sidebar.visible {
+      left: 0;
+    }
+
+    .sidebar.pinned + .main-content {
+      margin-left: 250px;
+    }
+
+    #hoverZone {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 40px;
+      z-index: 998;
+    }
+
+    .pin-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #ccc;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .pin-btn.pinned #pinIcon {
+      transform: rotate(45deg);
+      color: #00ffcc;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      transition: margin-left 0.3s ease-in-out;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .sidebar.pinned ~ .main {
+      margin-left: 250px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .month-item {
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      background: #2c3e50;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .month-item:hover {
+      background: #34495e;
+    }
+
+    .active-month {
+      background: #007bff !important;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      padding: 0.6rem 1.2rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    canvas {
+      display: block;
+      margin: 2rem auto 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .section-title {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar hidden" id="sidebar">
+    <h2>📅 Saved Months</h2>
+    <button class="pin-btn" id="pinToggle" title="Toggle Pin">
+      <span id="pinIcon">📌</span>
+    </button>
+    <div id="monthList">Login to load data...</div>
+  </div>
+
+  <div class="main" id="mainWrapper">
+    <h1>AKSHAY EMULA - Balance Sheet</h1>
+
+    <div class="card" id="loginCard">
+      <h2>Login</h2>
+      <label>Email</label>
+      <input type="email" id="email">
+      <label>Password</label>
+      <input type="password" id="password">
+      <button onclick="login()">Log In</button>
+    </div>
+
+    <div class="main-content" id="mainContent">
+      <div class="card hidden" id="formCard">
+        <label>Month</label>
+        <input type="text" id="month" placeholder="e.g. April 2025">
+
+        <div class="section-title">Income</div>
+        <label>Salary</label><input type="number" id="salary">
+        <label>Freelance</label><input type="number" id="freelance">
+        <label>Dividends</label><input type="number" id="dividends">
+
+        <div class="section-title">Expenses</div>
+        <label>Rent</label><input type="number" id="rent">
+        <label>Utilities</label><input type="number" id="utilities">
+        <label>Food</label><input type="number" id="food">
+        <label>Transport</label><input type="number" id="transport">
+
+        <div class="section-title">Assets</div>
+        <label>Bank Balance</label><input type="number" id="bank">
+        <label>Investments</label><input type="number" id="investments">
+
+        <div class="section-title">Liabilities</div>
+        <label>Loans</label><input type="number" id="loans">
+        <label>Credit Card Debt</label><input type="number" id="credit">
+
+        <button onclick="saveData()">💾 Save Data</button>
+        <button onclick="drawChart()">📊 Show Chart</button>
+        <canvas id="chart" width="400" height="200"></canvas>
+      </div>
+    </div>  
+  </div>
+
+  <div id="hoverZone"></div>
+
+  <script type="module">
+    const SUPABASE_URL = "https://xzgwkghzzinfmjrkjguf.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6Z3drZ2h6emluZm1qcmtqZ3VmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQxOTUxODYsImV4cCI6MjA1OTc3MTE4Nn0.UyB5N9gHy4D3ozICRe2ZiGTcr7d2pwRVBKxSFhl7bPg"; // Replace this with your secure key
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    let userId = null;
+
+    const sidebar = document.getElementById("sidebar");
+    const pinToggle = document.getElementById("pinToggle");
+    const pinIcon = document.getElementById("pinIcon");
+    const mainWrapper = document.getElementById("mainWrapper");
+
+    let sidebarPinned = false;
+
+    window.login = async function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) return alert("Login failed: " + error.message);
+      userId = data.user.id;
+      document.getElementById("loginCard").classList.add("hidden");
+      document.getElementById("formCard").classList.remove("hidden");
+      sidebar.classList.remove("hidden");
+      sidebar.classList.add("visible");
+      loadSavedMonths();
+    };
+
+    async function loadSavedMonths() {
+      const { data, error } = await supabase
+        .from('balance_data')
+        .select('month')
+        .eq('user_id', userId)
+        .order('month');
+
+      const list = document.getElementById("monthList");
+      list.innerHTML = "";
+
+      if (error || !data.length) {
+        list.innerHTML = "<p>No data yet.</p>";
+        return;
+      }
+
+      data.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "month-item";
+        div.innerText = entry.month;
+        div.onclick = () => loadMonthData(entry.month);
+        list.appendChild(div);
+      });
+    }
+
+    async function loadMonthData(month) {
+      const { data, error } = await supabase
+        .from('balance_data')
+        .select('*')
+        .eq('user_id', userId)
+        .eq('month', month)
+        .single();
+
+      if (error || !data) return alert("No data found for that month.");
+
+      document.getElementById("month").value = data.month;
+      document.getElementById("salary").value = data.salary;
+      document.getElementById("freelance").value = data.freelance;
+      document.getElementById("dividends").value = data.dividends;
+      document.getElementById("rent").value = data.rent;
+      document.getElementById("utilities").value = data.utilities;
+      document.getElementById("food").value = data.food;
+      document.getElementById("transport").value = data.transport;
+      document.getElementById("bank").value = data.bank_balance;
+      document.getElementById("investments").value = data.investments;
+      document.getElementById("loans").value = data.loans;
+      document.getElementById("credit").value = data.credit_cards;
+
+      drawChart();
+    }
+
+    window.saveData = async function () {
+  if (!userId) {
+    alert("User not logged in. Please log in again.");
+    return;
+  }
+
+  const data = {
+    user_id: userId,
+    month: document.getElementById("month").value.trim(),
+    salary: +document.getElementById("salary").value,
+    freelance: +document.getElementById("freelance").value,
+    dividends: +document.getElementById("dividends").value,
+    rent: +document.getElementById("rent").value,
+    utilities: +document.getElementById("utilities").value,
+    food: +document.getElementById("food").value,
+    transport: +document.getElementById("transport").value,
+    bank_balance: +document.getElementById("bank").value,
+    investments: +document.getElementById("investments").value,
+    loans: +document.getElementById("loans").value,
+    credit_cards: +document.getElementById("credit").value,
+  };
+
+  try {
+    const { data: savedData, error } = await supabase
+      .from('balance_data')
+      .upsert([data], { onConflict: ['user_id', 'month'] });
+
+    if (error) {
+      console.error("Supabase error:", error);
+      alert("Failed to save: " + error.message);
+    } else {
+      alert("Data saved!");
+      loadSavedMonths();
+    }
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    alert("Unexpected error: " + err.message);
+  }
+};
+
+
+    window.drawChart = function () {
+      const canvas = document.getElementById("chart");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const bank = +document.getElementById("bank").value;
+      const inv = +document.getElementById("investments").value;
+      const loans = +document.getElementById("loans").value;
+      const credit = +document.getElementById("credit").value;
+
+      const assets = bank + inv;
+      const liabilities = loans + credit;
+      const total = assets + liabilities;
+
+      const angleA = (assets / total) * 2 * Math.PI;
+      const angleL = (liabilities / total) * 2 * Math.PI;
+
+      ctx.beginPath();
+      ctx.moveTo(200, 100);
+      ctx.fillStyle = "#28a745";
+      ctx.arc(200, 100, 80, 0, angleA);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(200, 100);
+      ctx.fillStyle = "#dc3545";
+      ctx.arc(200, 100, 80, angleA, angleA + angleL);
+      ctx.fill();
+
+      ctx.fillStyle = "#000";
+      ctx.font = "14px sans-serif";
+      ctx.fillText(`Assets: ₹${assets}`, 10, 20);
+      ctx.fillText(`Liabilities: ₹${liabilities}`, 10, 40);
+    };
+
+    const hoverZone = document.getElementById("hoverZone");
+
+    hoverZone.addEventListener("mouseenter", () => {
+      if (!sidebarPinned) sidebar.classList.add("visible");
+    });
+
+    let hideTimeout;
+
+    sidebar.addEventListener("mouseleave", () => {
+      if (!sidebarPinned) {
+        hideTimeout = setTimeout(() => {
+          sidebar.classList.remove("visible");
+        }, 200);
+      }
+    });
+
+    sidebar.addEventListener("mouseenter", () => {
+      if (hideTimeout) clearTimeout(hideTimeout);
+    });
+
+    pinToggle.addEventListener("click", () => {
+      sidebarPinned = !sidebarPinned;
+      pinToggle.classList.toggle("pinned", sidebarPinned);
+      sidebar.classList.toggle("pinned", sidebarPinned);
+      sidebar.classList.add("visible");
+
+      if (sidebarPinned) {
+        mainWrapper.classList.add("sidebar-pinned");
+      } else {
+        mainWrapper.classList.remove("sidebar-pinned");
+      }
+    });
+  </script>
+</body>
+</html>

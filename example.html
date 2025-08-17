@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Akshay Emula</title>
+    <link rel="stylesheet" href="assets/css/myWebsite.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/socialmedia.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+
+
+        /* Career Progress Section */
+        .career-progress {
+            padding: 50px 20px;
+            text-align: center;
+            background: #f4f4f4;
+            margin: 20px 0;
+        }
+
+        .career-item {
+            opacity: 0; /* Initially hidden */
+            transform: translateY(50px); /* Start off below */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            margin-bottom: 20px;
+        }
+
+        .career-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .career-year {
+            font-size: 20px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .career-description {
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* Add class for the animation to be applied when the item is in view */
+        .career-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .career-progress h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Test.html" class="logo">Akshay Emula</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        ScrollReveal().reveal('career-progress', { delay: 500, origin: 'bottom', distance: '50px' });
+    </script>
+    <p>Visitors: <span id="visitor-count"></span></p>
+    <script>
+        let count = localStorage.getItem('page_view') || 0;
+        count++;
+        localStorage.setItem('page_view', count);
+        document.getElementById('visitor-count').innerText = count;
+    </script>
+    <section class="career-progress">
+        <h2>My Career Progress</h2>
+        <div class="career-item" id="junior-developer">
+            <div class="career-title">Junior Developer</div>
+            <div class="career-year">2018</div>
+            <div class="career-description">Started coding professionally, learned HTML, CSS, JavaScript.</div>
+        </div>
+        <div class="career-item" id="senior-developer">
+            <div class="career-title">Senior Developer</div>
+            <div class="career-year">2020</div>
+            <div class="career-description">Lead small teams, worked on React, Node.js, and more!</div>
+        </div>
+        <div class="career-item" id="lead-developer">
+            <div class="career-title">Lead Developer</div>
+            <div class="career-year">2022</div>
+            <div class="career-description">Led teams, worked on large-scale applications, contributed to strategic development.</div>
+        </div>
+        <div class="career-item" id="senior-consultant">
+            <div class="career-title">Senior Consultant</div>
+            <div class="career-year">2023</div>
+            <div class="career-description">Consulted on advanced development strategies and architectures.</div>
+        </div>
+        <p id="greeting"></p>
+<script>
+    const hour = new Date().getHours();
+    const greetingText = hour < 12 ? "Good Morning!" : hour < 18 ? "Good Afternoon!" : "Good Evening!";
+    document.getElementById("greeting").innerText = greetingText;
+</script>
+    </section>
+
+    <script>
+        // Set up the Intersection Observer
+        const careerItems = document.querySelectorAll('.career-item');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Stop observing once the animation is triggered
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger the animation when 50% of the element is in view
+        });
+
+        // Observe each career item
+        careerItems.forEach(item => observer.observe(item));
+    </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Akshay Emula</title>
+    <link rel="stylesheet" href="assets/css/myWebsite.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/socialmedia.css">
+    <link rel="stylesheet" href="assets/css/career-timeline.css">
+    <link rel="stylesheet" href="assets/css/book.css">
+    <link rel="stylesheet" href="assets/css/aboutmap.css">
+    <link rel="stylesheet" href="assets/css/resume.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+</head>
+<body>
+    
+    <header>
+        <nav>
+			<a href="Home.html" class="logo">Akshay Emula</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <!-- <li><a href="contact.html">Contact</a></li>-->
+            </ul>
+        </nav>
+        <div class="hero">
+            <div class="text">
+                <h1>Hello, I'm <span class="highlight">Akshay</span></h1>
+                <!--<p class="subtext">A passionate developer crafting elegant web experiences.</p>-->
+                <p class="subtext">Bridging technology, processes, and people for seamless IT services</p>
+				<a href="projects.html" class="btn">View My Work</a>	
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/akshay-emula/" target="_blank">
+                        <img src="assets/images/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/aksh__akshay/" target="_blank">
+                        <img src="assets/images/Instagram.jpg" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/akshaygilly" target="_blank">
+                        <img src="assets/images/facebook.jpg" alt="Facebook">
+                    </a>
+                    <!---<a href="C:\myProject\assets\resume\AKSHAY_EMULA.docx" target="_blank">
+                        <img src="assets/images/twietter.png" alt="Resume">
+                    </a>-->
+                </div>
+            </div>
+            <div class="image">
+                <img src="assets/images/me/4.jpg" alt="Akshay" class="profile-img" loading="lazy">
+            <!---<div data-aos="fade-up">This content will fade up when it enters the viewport.</div>-->
+            </div>
+        </div>
+        <!---<button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button> -->
+    </header>
+    <div id="clock"></div>
+    <!---<section class="photo-gallery">
+        <h2>Behind the Scenes</h2>
+        <div class="gallery">
+            <img src="assets/images/me/2.jpg" alt="Project 1">
+            <img src="assets/images/me/3.jpg" alt="Project 2">
+            <img src="assets/images/project-3.jpg" alt="Project 3">
+        </div> 
+    </section> -->
+   <!--- <section class="future-me">
+        <h2>What's Your Future in Tech?</h2>
+        <input type="text" id="name" placeholder="Enter your name...">
+        <button onclick="generatePrediction()">See your Future</button>
+        <p id="prediction"></p>
+    </section>
+    <script>
+        function generatePrediction() {
+            let predictions = [
+                "You'll build a full-stack app with React and Node!",
+                "You'll become a machine learning expert!",
+                "You’ll contribute to open-source projects that change the world!",
+                "You’ll create a game-changing app that will disrupt the industry!"
+            ];
+            let prediction = predictions[Math.floor(Math.random() * predictions.length)];
+            document.getElementById('prediction').textContent = prediction;
+        }
+    </script>
+    <section class="mission-tree">
+        <h2>My Mission</h2>
+        <div class="tree">
+            <div class="branch" onmouseover="showMissionDetail('innovation')">Innovation</div>
+            <div class="branch" onmouseover="showMissionDetail('learning')">Learning</div>
+            <div class="branch" onmouseover="showMissionDetail('growth')">Growth</div>
+        </div>
+        <p id="mission-detail"></p>
+    </section>
+    <script>
+        function showMissionDetail(value) {
+            let missionDetails = {
+                innovation: "I strive to create innovative solutions that solve real-world problems.",
+                learning: "I’m always learning new technologies to stay at the forefront of the industry.",
+                growth: "Personal and professional growth are my key motivators."
+            };
+            document.getElementById('mission-detail').textContent = missionDetails[value];
+        }
+    </script>
+    <section class="hobbies">
+        <h2>Hobbies & Interests</h2>
+        <ul>
+            <li>Traveling</li>
+            <li>Photography</li>
+            <li>Coding</li>
+            <li>Music</li>
+        </ul>
+    </section> -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById("clock").innerText = 
+                `Current Time where I am living: ${now.toLocaleTimeString()}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        </script>
+    <script>
+        //ScrollReveal().reveal('career-progress', { delay: 500, origin: 'bottom', distance: '50px' });
+    </script>
+    <section class="career-progress">
+        <h2>My Career Progress</h2>
+        <div class="career-item" id="Project Engineer">
+            <div class="career-title">Project Engineer</div>
+            <div class="career-year">2015</div>
+            <div class="career-description">Started IT career as App Support focusing on automation and process improvements</div>
+            <div class="career-description"> </div>
+            <div class="career-description">Work Location - INDIA</div>
+        </div>
+        <div class="career-item" id="Senior Project Engineer">
+            <div class="career-title">Senior Project Engineer</div>
+            <div class="career-year">2017</div>
+            <div class="career-description">Expanded responsibilities into service delivery ensuring smooth client operations</div>
+            <div class="career-description">Work Location - INDIA</div>
+        </div>
+        <div class="career-item" id="Technical Applications Service Delivery Lead">
+            <div class="career-title">Technical Applications Service Delivery Lead</div>
+            <div class="career-year">2019</div>
+            <div class="career-description">Led service delivery, IT service transitions, process improvements & managing end-to-end application delivery</div>
+            <div class="career-description">Work Location - INDIA.</div>
+        </div>
+        <div class="career-item" id="Technical Applications Service Delivery Lead">
+            <div class="career-title">Technical Applications Service Delivery Lead</div>
+            <div class="career-year">2022</div>
+            <div class="career-description">Relocated to Netherlands; led modernization and cloud initiatives</div>
+            <div class="career-description">Work Location - NETHERLANDS</div>
+        </div>
+        <div class="career-item" id="Senior Consultant">
+            <div class="career-title">Senior Consultant</div>
+            <div class="career-year">2024</div>
+            <div class="career-description">Driving service delivery and ITSM transformation, improving user experience and service performance</div>
+            <div class="career-description">Work Location - NETHERLANDS</div>
+            <div data-aos="fade-up">This content will fade up when it enters the viewport.</div>
+        </div>
+        <body>
+            <div class="container">
+                <!-- Resume Button -->
+                <button class="resume-btn" id="showResumeBtn">View Resume</button>
+            
+                <!-- Resume Modal (Hidden initially) -->
+                <div class="resume-modal" id="resumeModal">
+                    <button class="close-btn" id="closeResumeBtn">Close</button>
+                    <div class="resume-header">My Resume</div>
+                    <div id="resumeContent"></div> <!-- Placeholder for the .docx content -->
+                </div>
+            </div>
+            <!-- GSAP and JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script> <!-- Mammoth.js library -->
+        
+            <script>
+// Select elements
+const showResumeBtn = document.getElementById('showResumeBtn');
+const resumeModal = document.getElementById('resumeModal');
+const closeResumeBtn = document.getElementById('closeResumeBtn');
+const resumeContent = document.getElementById('resumeContent');
+
+// Function to open the resume modal
+function openResumeModal() {
+    console.log('Opening resume modal...'); // Check if the function is triggered
+    resumeModal.classList.add('open'); // Add the "open" class to show the modal
+    // Use GSAP for any additional animations if needed
+}
+
+// Function to close the resume modal
+function closeResumeModal() {
+    console.log('Closing resume modal...');
+    resumeModal.classList.remove('open'); // Remove the "open" class to hide the modal
+}
+
+// Event listener to open the resume modal when the button is clicked
+showResumeBtn.addEventListener('click', function() {
+    openResumeModal(); // Open the modal
+    loadResumeContent(); // Load the resume content
+});
+
+// Event listener to close the modal when the close button is clicked
+closeResumeBtn.addEventListener('click', closeResumeModal);
+
+// Function to load and display the .docx file content
+function loadResumeContent() {
+    console.log('Fetching .docx file from: assets/resume/AKSHAY_EMULA.docx');
+    fetch('assets/resume/AKSHAY_EMULA.docx')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.arrayBuffer();
+        })
+        .then(arrayBuffer => {
+            console.log('Successfully fetched .docx file');
+            mammoth.convertToHtml({ arrayBuffer: arrayBuffer })
+                .then(function(result) {
+                    console.log('Converted .docx to HTML');
+                    // Inject the converted HTML into the resumeContent div
+                    resumeContent.innerHTML = result.value;
+                })
+                .catch(function(err) {
+                    console.error("Error converting .docx to HTML: ", err);
+                });
+        })
+        .catch(function(err) {
+            console.error("Error fetching the .docx file: ", err);
+        });
+}
+
+                // Load the resume content when the modal is opened
+                showResumeBtn.addEventListener('click', function() {
+                    loadResumeContent();
+                });
+            </script>
+ 
+    
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+    </section>
+    <script>
+        function launchConfetti() {
+            var duration = 0.5 * 500; // 1 seconds
+            var end = Date.now() + duration;
+    
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ["#ff0000", "#ff8000", "#ffff00", "#00ff00", "#0000ff", "#8000ff", "#ff0080"],
+                });
+    
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
+    
+        // Trigger confetti when "My Career Progress" section appears
+        document.addEventListener("DOMContentLoaded", function () {
+            var careerSection = document.querySelector(".career-progress");
+    
+            if (careerSection) {
+                var observer = new IntersectionObserver(
+                    function (entries) {
+                        if (entries[0].isIntersecting) {
+                            launchConfetti();
+                            observer.disconnect(); // Stop observing after first trigger
+                        }
+                    },
+                    { threshold: 0.5 }
+                );
+    
+                observer.observe(careerSection);
+            }
+        });
+    </script>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(".career-item").forEach((item, index) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+//                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%", // Starts animation when item is 80% in viewport
+                    toggleActions: "play none none reverse",
+                },
+            }
+        );
+    });
+//});
+</script>
+ 
+    <script>
+        // Set up the Intersection Observer
+        const careerItems = document.querySelectorAll('.career-item');
+    
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Stop observing once the animation is triggered
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger the animation when 50% of the element is in view
+        });
+    
+        // Observe each career item
+        careerItems.forEach(item => observer.observe(item));
+    </script>
+
+        </script>
+    <section class="book-carousel">
+        <h2>My Personal Book Recommendations</h2>
+        <div class="carousel">
+            <!-- Each book is a div with a background image (book cover) -->
+            <div class="book" style="background-image: url('assets/images/books/12week.jpg') ;"></div>
+            <div class="book" style="background-image: url('assets/images/books/RichDad.jpg');"></div>
+            <div class="book" style="background-image: url('assets/images/books/Monk.jpg');"></div>
+            <div class="book" style="background-image: url('assets/images/books/EasyWay.jpg');"></div>
+            <div class="book" style="background-image: url('assets/images/books/NoExcuses.jpg');"></div>
+            <div class="book" style="background-image: url('assets/images/books/Win.jpg');"></div>
+            <div class="book" style="background-image: url('assets/images/books/Atomic.jpg');"></div>
+
+            <!-- Add more books as needed -->
+        </div>
+    </section>
+    <script>
+        gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });
+        gsap.from(".hero .image", { opacity: 0, scale: 6.5, duration: 1, ease: "elastic.out(1, 0.5)", delay: 1.0 });
+        gsap.from(".about-content", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
+        gsap.from(".profile-img", { opacity: 0, scale: 0.8, duration: 1, delay: 1 });
+    </script>
+   <script>
+    window.addEventListener("scroll", function () {
+        var scrollPosition = window.scrollY;
+        var heroImage = document.querySelector(".profile-img");
+        heroImage.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+    });
+</script>
+<script>
+    gsap.from(".highlight", {
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    delay: 0.5,
+    ease: "elastic.out(1, 0.5)"
+});
+</script>
+
+<p>Visitors: <span id="visitor-count"></span></p>
+<script>
+    let count = localStorage.getItem('page_view') || 0;
+    count++;
+    localStorage.setItem('page_view', count);
+    document.getElementById('visitor-count').innerText = count;
+</script>
+
+<!-- TESTING 2-->
+ <!-- TESTING 2
+<marquee behavior="scroll" direction="left">Welcome to my portfolio! I’m a passionate Tech Enthusiast! 🚀</marquee>-->
+<style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('scroll', function() {
+            var header = document.querySelector('.header-container');
+            var content = document.querySelector('.content-section');
+            if (window.scrollY > 100) {
+                header.classList.add('shrink');
+                content.classList.add('visible');
+            } else {
+                header.classList.remove('shrink');
+                content.classList.remove('visible');
+            }
+        });
+    });
+</script>
+<script>
+scroll-behavior: smooth;
+</script>
+<script>
+  AOS.init();
+</script>
+<div data-aos="fade-up">This content will fade up when it enters the viewport.</div>
+
+
+</body>
+</html>

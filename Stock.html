@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Stock Market Chart</title>
+   <!-- <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/global.css">-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #chart-container {
+            width: 60vw;
+            height: 40vh;
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h2>📈 My Career as a Stock Market Chart</h2>
+    <div id="stock-section">
+        <canvas id="careerChart"></canvas>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('careerChart').getContext('2d');
+        let careerData = [0, 15, 30, 36, 45, 60]; // Initial career ups and downs
+        let labels = ["2015", "2017", "2019", "2021", "2023", "2024"];
+
+        const careerChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Career Growth',
+                    data: careerData,
+                    borderColor: 'green',
+                    borderWidth: 2,
+                    fill: false,
+                    pointRadius: 5,
+                    pointBackgroundColor: 'green'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Trigger animation when the section comes into view
+        const stockSection = document.getElementById("stock-section");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    addLiveSpike();
+                    observer.unobserve(stockSection);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(stockSection);
+        
+        function addLiveSpike() {
+            careerData.push(careerData[careerData.length - 1] + Math.floor(Math.random() * 40) + 20); // Random spike
+            labels.push("2025");
+            careerChart.update();
+        }
+    </script>
+</body>
+</html>

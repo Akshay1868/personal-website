@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies - Passport & Social Feed</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5dc;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        /* Left Side - Passport */
+        .passport {
+            width: 50%;
+            background: url('https://source.unsplash.com/600x800/?passport,travel') no-repeat center/cover;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+        .stamp {
+            width: 120px;
+            height: 120px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px dashed #333;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .stamp:hover {
+            transform: scale(1.1);
+        }
+        .stamp img {
+            width: 80px;
+            height: 80px;
+        }
+        /* Right Side - Social Media */
+        .social-feed {
+            width: 50%;
+            padding: 20px;
+            background: #fff;
+        }
+        .post {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .post img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .likes {
+            color: #e44d26;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left Side - Passport -->
+        <div class="passport">
+            <h2>📖 My Hobby Passport</h2>
+            <div class="stamp" onclick="showStory('cricket')">
+                <img src="https://source.unsplash.com/100x100/?cricket,sports" alt="Cricket">
+            </div>
+            <div class="stamp" onclick="showStory('books')">
+                <img src="assets/images/book.jpg" alt="Books">
+            </div>
+            <div class="stamp" onclick="showStory('gaming')">
+                <img src="assets/images/gaming.jpg" alt="Gaming">
+            </div>
+            <div class="stamp" onclick="showStory('coding')">
+                <img src="assets/images/coding.jpg" alt="Coding">
+            </div>
+        </div>
+
+        <!-- Right Side - Social Media Feed -->
+        <div class="social-feed">
+            <h2>📱 My Social Feed</h2>
+            <div class="post">
+                <img src="https://source.unsplash.com/300x200/?cricket,stadium" alt="Cricket">
+                <p>🏏 "The roar of the crowd, the thrill of the game. Cricket is life!" #CricketLover #GameOn</p>
+                <span class="likes">❤️ 220 Likes</span>
+            </div>
+            <div class="post">
+                <img src="assets/images/book.jpg" alt="Books">
+                <p>📚 "Just finished another self-improvement book! #GrowthMindset #BookLover"</p>
+                <span class="likes">❤️ 180 Likes</span>
+            </div>
+            <div class="post">
+                <img src="assets/images/gaming.jpg" alt="Gaming">
+                <p>🎮 "Leveling up in life and in games. Esports is the future! #GamerLife"</p>
+                <span class="likes">❤️ 150 Likes</span>
+            </div>
+            <div class="post">
+                <img src="assets/images/coding.jpg" alt="Coding">
+                <p>💻 "Every error is a puzzle to solve. Coding is my creative escape! #CodeNewbie"</p>
+                <span class="likes">❤️ 190 Likes</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showStory(hobby) {
+            let stories = {
+                "cricket": "I started playing cricket in my childhood. The sound of the bat hitting the ball, the strategy behind every shot—it all became a way of life!",
+                "books": "I got into reading through self-improvement books. They gave me a new perspective on life and taught me valuable lessons.",
+                "gaming": "Gaming is more than fun—it's a world of adventure! From RPGs to fast-paced shooters, I love the thrill of competition.",
+                "coding": "I discovered coding as a teenager. Turning ideas into reality with a few lines of code felt like magic!"
+            };
+            alert(stories[hobby]);
+        }
+    </script>
+
+</body>
+</html>

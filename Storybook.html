@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Storybook Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .storybook {
+            width: 70vw;
+            height: 80vh;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="storybook">
+        <div class="page" id="page1">👋 Welcome to My Story! <br> Swipe to start →</div>
+        <div class="page" id="page2" style="display: none;">🚀 Project Engineer (2015)<br>Worked on exciting projects!</div>
+        <div class="page" id="page3" style="display: none;">🔥 Senior Engineer (2017)<br>Led teams and delivered results!</div>
+        <div class="page" id="page4" style="display: none;">💡 Tech Lead (2019)<br>Built innovative solutions!</div>
+        <div class="page" id="page5" style="display: none;">🏆 Senior Consultant (2024)<br>Solving problems at scale!</div>
+        <button class="nav-btn prev" onclick="prevPage()">⬅</button>
+        <button class="nav-btn next" onclick="nextPage()">➡</button>
+    </div>
+    
+    <script>
+        let currentPage = 1;
+        const totalPages = 5;
+        
+        function showPage(page) {
+            gsap.to(".page", { opacity: 0, display: "none", duration: 0.5 });
+            gsap.to(`#page${page}`, { opacity: 1, display: "flex", duration: 0.5 });
+        }
+        
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+        
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+    </script>
+</body>
+</html>

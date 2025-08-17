@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.travel-intro {
+    text-align: center;
+    padding: 40px;
+    background-color: #ff7f50;
+    color: white;
+}
+
+.travel-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.travel-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    padding: 15px;
+}
+
+.travel-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.travel-card h3 {
+    margin: 10px 0 5px;
+}
+
+.travel-card p {
+    color: #555;
+}

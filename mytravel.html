@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Travel | Akshay Emula</title>
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/mytravel.css"> <!-- Additional styles for MyTravel page -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script>
+        document.addEventListener("scroll", function() {
+            let header = document.querySelector(".header-container img");
+            let scrollPosition = window.scrollY;
+            let scaleValue = Math.max(0.5, 1 - scrollPosition / 500);
+            header.style.transform = `scale(${scaleValue})`;
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="test.html" class="logo">Akshay Emula</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="mytravel.html">My Travel</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div id="particles-js"></div> <!-- Particle Effect Background -->
+        <div class="hero-content">
+            <div class="text">
+                <h1>My Travel Adventures</h1>
+                <p class="subtext">Join me as I explore new places and cultures around the world!</p>
+                <a href="#gallery" class="btn">Explore the Journey</a>
+            </div>
+            <div id="three-container"></div> <!---  3D Animation Container --> 
+        </div>
+    </header>
+
+    <main>
+        <section class="travel-gallery" id="gallery">
+            <h2>Travel Gallery</h2>
+            <div class="grid">
+                <div class="travel-item">
+                    <img src="assets/images/paris.jpg" alt="Paris">
+                    <p>Paris</p>
+                </div>
+                <div class="travel-item">
+                    <img src="assets/images/rome.jpg" alt="Rome">
+                    <p>Rome</p>
+                </div>
+                <!-- Add more travel destinations -->
+            </div>
+        </section>
+
+        <section class="travel-blog">
+            <h2>Travel Blog</h2>
+            <p>Read about my experiences and tips for traveling the world.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Akshay Emula</p>
+    </footer>
+
+    <script>
+        gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });
+        gsap.from(".hero .image", { opacity: 0, scale: 6.5, duration: 1, ease: "elastic.out(1, 0.5)", delay: 1.9 });
+    </script>
+    <script src="assets/js/mytravel.js"></script>
+</body>
+</html>

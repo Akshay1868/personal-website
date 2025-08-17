@@ -1,0 +1,53 @@
+/* About Page Styles */
+.about-content {
+    text-align: center;
+    padding: 50px;
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    color: #666;
+}
+/* Hero Image - Adjusted for All Screens - GASP Affect is in ABOUT.HTML*/
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img {
+    width: 1750px; /* Default smaller size */
+    max-width: 80%; /* Image scales with screen */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+    .hero-text {
+        max-width: 80%;
+    }
+    .profile-img {
+        width: 200px; /* Adjust for smaller screens */
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-img {
+        width: 150px; /* Smaller for mobile */
+        max-width: 60%;
+    }
+}
+/* Till here about the PHOT in ABOUT PAGE*/

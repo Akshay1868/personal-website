@@ -1,0 +1,5 @@
+ const SUPABASE_URL = "https://xzgwkghzzinfmjrkjguf.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6Z3drZ2h6emluZm1qcmtqZ3VmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQxOTUxODYsImV4cCI6MjA1OTc3MTE4Nn0.UyB5N9gHy4D3ozICRe2ZiGTcr7d2pwRVBKxSFhl7bPg";
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    let userId = null;

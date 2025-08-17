@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume Display</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    display: column;
+    justify-content: left;
+    align-items: left;
+    height: 100vh;
+    position: relative;
+}
+
+.resume-btn {
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.resume-btn:hover {
+    transform: scale(1.1);
+}
+
+.resume-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+}
+
+.resume-modal.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0s;
+}
+
+.resume-header {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.close-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Resume Button -->
+        <button class="resume-btn" id="showResumeBtn">View Resume</button>
+        
+        <!-- Resume Modal (Hidden initially) -->
+        <div class="resume-modal" id="resumeModal">
+            <button class="close-btn" id="closeResumeBtn">Close</button>
+            <div class="resume-header">My Resume</div>
+            <div id="resumeContent"></div> <!-- Placeholder for the .docx content -->
+        </div>
+    </div>
+
+    <!-- GSAP and JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script> <!-- Mammoth.js library -->
+
+    <script>
+        // Select elements
+        const showResumeBtn = document.getElementById('showResumeBtn');
+        const resumeModal = document.getElementById('resumeModal');
+        const closeResumeBtn = document.getElementById('closeResumeBtn');
+        const resumeContent = document.getElementById('resumeContent');
+
+        // Function to open resume modal with animations
+        function openResumeModal() {
+            gsap.to(resumeModal, {
+                scale: 1, // Scale to full size
+                opacity: 1, // Fade in
+                visibility: 'visible',
+                duration: 1, // Animation duration
+                ease: 'power3.out',
+            });
+        }
+
+        // Function to close resume modal with animations
+        function closeResumeModal() {
+            gsap.to(resumeModal, {
+                scale: 0, // Shrink to 0
+                opacity: 0, // Fade out
+                visibility: 'hidden',
+                duration: 0.5, // Animation duration
+                ease: 'power3.in',
+            });
+        }
+
+        // Event listeners for opening and closing the modal
+        showResumeBtn.addEventListener('click', openResumeModal);
+        closeResumeBtn.addEventListener('click', closeResumeModal);
+
+        // Function to load and display the .docx file content (AKSHAY_EMULA.docx)
+        function loadResumeContent() {
+            // Log to check if the fetch path is correct
+            console.log('Fetching .docx file from: assets/resume/AKSHAY_EMULA.docx');
+
+            fetch('assets/resume/AKSHAY_EMULA.docx')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.arrayBuffer();
+                })
+                .then(arrayBuffer => {
+                    console.log('Successfully fetched .docx file');
+                    mammoth.convertToHtml({ arrayBuffer: arrayBuffer })
+                        .then(function(result) {
+                            console.log('Converted .docx to HTML');
+                            // Inject the converted HTML into the resumeContent div
+                            resumeContent.innerHTML = result.value;
+                        })
+                        .catch(function(err) {
+                            console.error("Error converting .docx to HTML: ", err);
+                        });
+                })
+                .catch(function(err) {
+                    console.error("Error fetching the .docx file: ", err);
+                });
+        }
+
+        // Load the resume content when the modal is opened
+        showResumeBtn.addEventListener('click', function() {
+            loadResumeContent();
+        });
+    </script>
+</body>
+</html>

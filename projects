@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Akshay Emula</title>
+    <link rel="stylesheet" href="assets/css/myWebsite.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/projects.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Test.html" class="logo">Akshay Emula</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="projects-content">
+        <h1>My Projects</h1>
+        <div class="project-card">
+            <h3>Win 2012 EoSL Migration</h3>
+            <p>Solving complex IT challenges...</p>
+            <a href="#">Read More →</a>
+        </div>
+    </section>
+</body>
+</html>

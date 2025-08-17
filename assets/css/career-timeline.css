@@ -1,0 +1,158 @@
+/* Career Progress Section */
+.career-progress {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Soft gradient background */
+    margin: 50px 0;
+    position: relative;
+}
+/* Optional: Styling for the *My Career Progress Title */
+.career-progress h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: black  ;
+}
+/* Vertical Line Animation */
+.career-progress::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    height: 0%;
+    background-color: #3498db;
+    transition: height 1.5s ease-in-out;
+}
+
+/* Grow the line when section is visible */
+.career-progress.active::before {
+    height: 100%; /* Expands to full timeline height */
+}
+/* Only show when section is visible 
+.career-progress.active::before {
+    height: calc(100% - 70px); /* Adjust as per last milestone 
+}*/
+/* Growing line animation on scroll */
+.career-progress.active::before {
+    height: 100%;
+}
+
+/* Career Item Animation */
+.career-item {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9); /* Start small */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 30px auto;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Left & Right Alternating Cards */
+.career-item:nth-child(odd) {
+    left: -10%;
+    animation: floatLeft 1s infinite alternate;
+}
+
+.career-item:nth-child(even) {
+    left: 10%;
+    animation: floatRight 1s infinite alternate;
+}
+
+/* Floating Effect */
+@keyframes floatLeft {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-5px); }
+}
+
+@keyframes floatRight {
+    from { transform: translateY(0px); }
+    to { transform: translateY(5px); }
+}
+
+/* Career Title */
+.career-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+/* Glowing Career Year */
+.career-year {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #3498db;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Glow Effect */
+@keyframes glow {
+    from { box-shadow: 0 0 5px #3498db; }
+    to { box-shadow: 0 0 20px #3498db; }
+}
+
+/* Text Styles */
+.career-description {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+/* 3D Hover Effect */
+.career-item:hover {
+    transform: scale(1.05) rotateY(3deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation when visible */
+.career-item.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    background-color: red;
+    opacity: 1;
+    animation: fall 2.5s ease-out forwards, spin 2s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

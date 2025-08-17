@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Akshay Emula</title>
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/socialmedia.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Test.html" class="logo">Akshay Emula</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="floating-shapes-container">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero">
+            <div class="text">
+                <h1>Hello, I'm <span class="highlight">Akshay</span></h1>
+                <!--<p class="subtext">A passionate developer crafting elegant web experiences.</p>-->
+                <p class="subtext">Bridging technology, processes, and people for seamless IT services</p>
+				<a href="projects.html" class="btn">View My Work</a>	
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/akshay-emula/" target="_blank">
+                        <img src="assets/images/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/aksh__akshay/" target="_blank">
+                        <img src="assets/images/Instagram.jpg" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/akshaygilly" target="_blank">
+                        <img src="assets/images/facebook.jpg" alt="Facebook">
+                    </a>
+                    <a href="C:\myProject\assets\resume\AKSHAY_EMULA.docx" target="_blank">
+                        <img src="assets/images/twietter.png" alt="Resume">
+                    </a>
+                </div>
+            </div>
+    </header>
+
+    <section class="contact-header">
+        <h1>Contact Me</h1>
+    </section>
+
+    <section class="contact-form-container">
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Message sent successfully!");
+        });
+    </script>
+
+    <script src="assets/js/global.js"></script>
+</body>
+</html>
