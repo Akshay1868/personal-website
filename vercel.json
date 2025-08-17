@@ -8,6 +8,6 @@
       { "src": "/cloudmigration", "dest": "/cloud-migration.html"},
       { "src": "/cloudcost", "dest": "/cloudcost.html" },
       { "src": "/SLADashboard", "dest": "/SLA.html" },
-      { "src": "/WebAppModernization", "dest": "/WebApp-Modernization.html" }
+      { "src": "/WebAppModernization", "dest": "/WebApp-Modernization.html"}
     ]
   }
