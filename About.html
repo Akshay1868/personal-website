@@ -316,12 +316,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<p>Visitors: <span id="visitor-count"></span></p>
+<!-- <p>Visitors: <span id="visitor-count"></span></p>
 <script>
     let count = localStorage.getItem('page_view') || 0;
     count++;
     localStorage.setItem('page_view', count);
     document.getElementById('visitor-count').innerText = count;
+</script> -->
+
+<p>Visitor Count: <span id="visitor-count"></span></p>
+
+<script>
+fetch("https://api.countapi.xyz/hit/akshayemula.nl/about")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visitor-count").innerText = data.value;
+  })
+  .catch(err => {
+    console.error("CountAPI error:", err);
+    document.getElementById("visitor-count").innerText = "N/A";
+  });
 </script>
 
 <!-- TESTING 2-->
