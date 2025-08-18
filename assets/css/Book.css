@@ -41,10 +41,10 @@
 }
 
 /* Vercel-proof background images using classes */
-.book-12Week { background-image: url('/assets/images/12Week.jpg'); }
-.book-RichDad { background-image: url('/assets/images/RichDad.jpg'); }
-.book-Monk { background-image: url('/assets/images/Monk.jpg'); }
-.book-EasyWay { background-image: url('/assets/images/EasyWay.jpg'); }
-.book-NoExcuses { background-image: url('/assets/images/NoExcuses.jpg'); }
-.book-WIn { background-image: url('/assets/images/WIn.jpg'); }
-.book-Atomic { background-image: url('/assets/images/Atomic.jpg'); }
+.book-12Week { background-image: url('../assets/images/12Week.jpg'); }
+.book-RichDad { background-image: url('../assets/images/RichDad.jpg'); }
+.book-Monk { background-image: url('../assets/images/Monk.jpg'); }
+.book-EasyWay { background-image: url('../assets/images/EasyWay.jpg'); }
+.book-NoExcuses { background-image: url('../assets/images/NoExcuses.jpg'); }
+.book-WIn { background-image: url('../assets/images/WIn.jpg'); }
+.book-Atomic { background-image: url('../assets/images/Atomic.jpg'); }
