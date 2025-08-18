@@ -326,18 +326,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <p>Visitor Count: <span id="visitor-count"></span></p>
 
-<script>
-  // Array of “visitor counts” to randomly pick from
-  const visitorNumbers = [245, 255, 280, 285, 300, 302, 315, 321, 333, 345, 380, 399, 400, 405, 410, 512, 783, 1024, 1345, 1789, 2034, 2567, 3098];
 
-  function getRandomVisitorCount() {
-    const randomIndex = Math.floor(Math.random() * visitorNumbers.length);
-    return visitorNumbers[randomIndex];
-  }
+<script>
+  // Array of predefined visitor counts
+  const visitorNumbers = [245, 255, 260, 270,275,280,285,290,292,295,297,300,302,315,321,333,341, 345, 380, 399, 400, 405, 410, 415,421,425,512, 783];
+
+  // Get last index used from localStorage
+  let lastIndex = parseInt(localStorage.getItem('visitorIndex')) || -1;
+
+  // Compute next index in sequence
+  let nextIndex = (lastIndex + 1) % visitorNumbers.length;
+
+  // Save next index for future visits
+  localStorage.setItem('visitorIndex', nextIndex);
 
   // Update the page
-  document.getElementById('visitor-count').innerText = getRandomVisitorCount();
+  document.getElementById('visitor-count').innerText = visitorNumbers[nextIndex];
 </script>
+
 
 <!-- TESTING 2-->
  <!-- TESTING 2
