@@ -1,14 +1,23 @@
 {
     "version": 2,
     "routes": [
+      {
+        "src": ".*",
+        "headers": {
+          "Location": "https://www.akshayemula.nl$uri"
+        },
+        "status": 308,
+        "dest": "/"
+      },
       { "src": "/", "dest": "/HOME.html" },
       { "src": "/HOME", "dest": "/HOME.html" },
       { "src": "/about", "dest": "/About.html" },
       { "src": "/projects", "dest": "/projects.html" },
-      { "src": "/cloudmigration", "dest": "/cloud-migration.html"},
+      { "src": "/cloudmigration", "dest": "/cloud-migration.html" },
       { "src": "/cloudcost", "dest": "/cloudcost.html" },
       { "src": "/SLADashboard", "dest": "/SLA.html" },
-      { "src": "/WebAppModernization", "dest": "/WebApp-Modernization.html"},
-      { "src": "/AdvancedAppMonitoring", "dest": "/advanced-app-monitoring.html"}
+      { "src": "/WebAppModernization", "dest": "/WebApp-Modernization.html" },
+      { "src": "/AdvancedAppMonitoring", "dest": "/advanced-app-monitoring.html" }
     ]
   }
+  
