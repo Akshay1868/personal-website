@@ -47,4 +47,27 @@ nav ul li a {
     color: #000;
     transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    nav {
+        flex-direction: row;           /* Keep logo left, links right */
+        justify-content: space-between; /* Ensure spacing remains */
+        align-items: center;
+        padding: 10px 15px;
+    }
 
+    .logo {
+        font-size: 1.3rem; /* smaller logo for mobile */
+    }
+
+    nav ul {
+        flex-direction: row; /* keep links in a row */
+        gap: 10px;           /* tighter spacing for mobile */
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li a {
+        font-size: 0.85rem;
+    }
+}
