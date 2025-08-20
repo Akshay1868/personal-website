@@ -66,22 +66,3 @@ nav ul li a {
 }
 
 
-/* Mobile adjustments */
-@media (max-width: 480px) {
-    nav {
-        padding: 10px 10px;
-    }
-
-    nav ul {
-        gap: 8px; /* tighter spacing */
-        justify-content: flex-start; /* keep links left-aligned */
-    }
-
-    .logo {
-        font-size: 1.3rem; /* smaller logo */
-    }
-
-    nav ul li a {
-        font-size: 0.85rem;
-    }
-}
