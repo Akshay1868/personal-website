@@ -132,5 +132,36 @@
         }
     </script>
 
+<script>
+    const carousels = document.querySelectorAll('.carousel');
+  
+    // 1) Turn vertical wheel into horizontal scroll
+    carousels.forEach(c => {
+      c.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          c.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+    });
+  
+    // 2) Click-and-drag to scroll (works for mouse & touch via Pointer Events)
+    carousels.forEach(c => {
+      let down = false, startX = 0, startLeft = 0;
+      c.addEventListener('pointerdown', (e) => {
+        down = true;
+        c.setPointerCapture(e.pointerId);
+        startX = e.clientX;
+        startLeft = c.scrollLeft;
+      });
+      c.addEventListener('pointermove', (e) => {
+        if (!down) return;
+        c.scrollLeft = startLeft - (e.clientX - startX);
+      });
+      ['pointerup','pointercancel','pointerleave'].forEach(type =>
+        c.addEventListener(type, () => { down = false; })
+      );
+    });
+  </script>
 </body>
 </html>

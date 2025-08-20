@@ -17,14 +17,17 @@
 /* Flex container to hold the books horizontally */
 .carousel {
     display: flex; /* Align books horizontally */
-    justify-content: center;
+    /*justify-content: center;*/
+    justify-content: flex-start; /* instead of center */
     gap: 20px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    padding-bottom: 10px; /* space for scrollbar on mobile */
 }
 
 /* Styling for each book */
 .book {
+    flex: 0 0 auto; /* Prevent shrinking */
     width: 250px;
     height: 350px;
     background-size: cover;
@@ -48,3 +51,38 @@
 .book-NoExcuses { background-image: url('/assets/images/NoExcuses.jpg'); }
 .book-WIn { background-image: url('/assets/images/WIn.jpg'); }
 .book-Atomic { background-image: url('/assets/images/Atomic.jpg'); }
+
+/* ========================= */
+/* RESPONSIVE MEDIA QUERIES  */
+/* ========================= */
+
+/* Laptop screens */
+@media (max-width: 1024px) {
+    .book {
+        width: 180px;
+        height: 260px;
+    }
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+    .book {
+        width: 150px;
+        height: 220px;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+    .book {
+        width: 120px;
+        height: 180px;
+    }
+
+    .book-carousel h2 {
+        font-size: 1.5rem;
+    }
+}
+body {
+    overflow-x: hidden; /* Prevents left/right breaking */
+}

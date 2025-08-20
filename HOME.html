@@ -23,6 +23,7 @@
 <body>
     <header>
         <nav>
+            <!--<button id="menu-toggle">☰</button>-->
            <!-- <div class="logo">Akshay Emula</div> -->
 			<a href="/HOME" class="logo">Akshay Emula</a>
             <ul>
@@ -53,6 +54,11 @@
 
     <script>
         gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });
+    </script>
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+    document.querySelector("nav").classList.toggle("active");
+});
     </script>
     <script>
         gsap.from(".hero .text", { opacity: 0, x: -50, duration: 1, ease: "power2.out" });

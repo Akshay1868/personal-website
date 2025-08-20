@@ -31,7 +31,17 @@ body {
     white-space: nowrap;
     width: fit-content;
 }
+@media (max-width: 1024px) {
+    .typing-text { font-size: 2.2rem; }
+}
 
+@media (max-width: 768px) {
+    .typing-text { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+    .typing-text { font-size: 1.4rem; }
+}
 /* Typing Effect */
 @keyframes blink {
     50% { border-color: transparent; }
@@ -82,15 +92,22 @@ body {
 
 /* Call to Action */
 .hero-content .btn {
-    display: inline-block;
     padding: 12px 25px;
-    background: #ff9800;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: 0.3s;
-    margin-top: 20px;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .hero-content .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content .btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
 }
 
 .hero-content .btn:hover {
@@ -220,4 +237,80 @@ nav ul li a {
 /* Ensure nav is always visible */
 body {
     padding-top: 60px; /* To prevent content from hiding behind sticky nav */
+}
+/* Hide nav links on mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide links */
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav.active ul {
+        display: flex; /* Show links when nav is active */
+    }
+}
+/* Ensure nav is always visible */
+body {
+    padding-top: 60px; /* To prevent content from hiding behind sticky nav */
+}
+
+/* ------------------ */
+/* RESPONSIVE FIXES   */
+/* ------------------ */
+
+@media (max-width: 768px) {
+    .shape {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .shape {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+
+/* ------------------ */
+/* Akshay   */
+/* ------------------ */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+        font-size: 1.5rem; /* slightly smaller on mobile */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; /* reduce spacing */
+    }
+
+    nav ul li a {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    nav ul li a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
 }

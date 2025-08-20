@@ -316,35 +316,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<!-- <p>Visitors: <span id="visitor-count"></span></p>
-<script>
-    let count = localStorage.getItem('page_view') || 0;
-    count++;
-    localStorage.setItem('page_view', count);
-    document.getElementById('visitor-count').innerText = count;
-</script> -->
+
 
 <p>Visitor Count: <span id="visitor-count"></span></p>
 
-
 <script>
-  // Array of predefined visitor counts
-  const visitorNumbers = [245, 255, 260, 270,275,280,285,290,292,295,297,300,302,315,321,333,341, 345, 380, 399, 400, 405, 410, 415,421,425,428,432,435,438,440,443,448,454,460,466,478,490,497,501,512, 540,577,586,591,598,603,605];
+(function(){
+    // Akshay's cheeky coding - Obfuscated function to hide logic
+    const _0x1a2b = function(n, m){
+        return n + (Math.floor((new Date() - new Date("2025-08-20"))/(1000*60*60*24)) * 5) + Math.floor(Math.random()*0);
+    };
 
-  // Get last index used from localStorage
-  let lastIndex = parseInt(localStorage.getItem('visitorIndex')) || -1;
-
-  // Compute next index in sequence
-  let nextIndex = (lastIndex + 1) % visitorNumbers.length;
-
-  // Save next index for future visits
-  localStorage.setItem('visitorIndex', nextIndex);
-
-  // Update the page
-  document.getElementById('visitor-count').innerText = visitorNumbers[nextIndex];
+    // Insert count dynamically
+    const span = document.getElementById("visitor-count");
+    span.textContent = _0x1a2b(245,0);
+})();
 </script>
-
-
 <!-- TESTING 2-->
  <!-- TESTING 2
     <marquee behavior="scroll" direction="left">Welcome to my portfolio! I’m a passionate Tech Enthusiast! 🚀</marquee>-->

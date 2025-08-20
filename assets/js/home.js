@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Logo navigation to home
     document.querySelector(".logo").addEventListener("click", function () {
-        window.location.href = "Test.html";
+        window.location.href = "HOME.html";
     });
 
     // Typing Effect
