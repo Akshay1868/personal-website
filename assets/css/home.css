@@ -39,9 +39,9 @@ body {
     .typing-text { font-size: 1.8rem; }
 }
 
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {
     .typing-text { font-size: 1.4rem; }
-}
+}*/
 /* Typing Effect */
 @keyframes blink {
     50% { border-color: transparent; }
