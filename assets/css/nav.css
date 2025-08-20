@@ -66,36 +66,22 @@ nav ul li a {
 }
 
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Mobile adjustments */
+@media (max-width: 480px) {
     nav {
-        flex-direction: row; /* Keep logo left, links right */
-        justify-content: space-between; 
-        flex-wrap: wrap;      /* Allow links to wrap to next line if needed */
-        padding: 10px 15px;
-        text-align: left;     /* Logo stays left */
-    }
-
-    .logo {
-        margin-bottom: 0;     /* remove extra spacing */
+        padding: 10px 10px;
     }
 
     nav ul {
-        flex-direction: row;  /* Keep links in row */
-        flex-wrap: wrap;      /* Wrap to next line if too long */
-        gap: 10px;            /* space between links */
-        justify-content: flex-start;
-        width: auto;
-        margin: 0;
-        padding: 0;
+        gap: 8px; /* tighter spacing */
+        justify-content: flex-start; /* keep links left-aligned */
     }
 
-    nav ul li {
-        display: inline-block;
+    .logo {
+        font-size: 1.3rem; /* smaller logo */
     }
 
     nav ul li a {
-        font-size: 1rem;
-        display: inline-block;
+        font-size: 0.85rem;
     }
 }
