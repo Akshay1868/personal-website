@@ -72,7 +72,7 @@ nav ul li a {
         flex-direction: row; /* Keep logo left, links right */
         justify-content: space-between; 
         flex-wrap: wrap;      /* Allow links to wrap to next line if needed */
-        padding: 10px 20px;
+        padding: 10px 15px;
         text-align: left;     /* Logo stays left */
     }
 
@@ -83,8 +83,8 @@ nav ul li a {
     nav ul {
         flex-direction: row;  /* Keep links in row */
         flex-wrap: wrap;      /* Wrap to next line if too long */
-        gap: 15px;            /* space between links */
-        justify-content: flex-end;
+        gap: 10px;            /* space between links */
+        justify-content: flex-start;
         width: auto;
         margin: 0;
         padding: 0;
