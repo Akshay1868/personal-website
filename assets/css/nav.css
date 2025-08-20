@@ -69,33 +69,33 @@ nav ul li a {
 /* Responsive Design */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px 15px; /* smaller padding for mobile */
+        flex-direction: row; /* Keep logo left, links right */
+        justify-content: space-between; 
+        flex-wrap: wrap;      /* Allow links to wrap to next line if needed */
+        padding: 10px 20px;
+        text-align: left;     /* Logo stays left */
     }
 
     .logo {
-        margin-bottom: 10px;
+        margin-bottom: 0;     /* remove extra spacing */
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;           /* space between links */
-        max-height: 80vh;    /* prevent overflow */
-        overflow-y: auto;    /* scroll if too long */
-        width: 100%;         /* full width on mobile */
-        padding: 0;
+        flex-direction: row;  /* Keep links in row */
+        flex-wrap: wrap;      /* Wrap to next line if too long */
+        gap: 15px;            /* space between links */
+        justify-content: flex-end;
+        width: auto;
         margin: 0;
+        padding: 0;
     }
 
     nav ul li {
-        display: block;
+        display: inline-block;
     }
 
     nav ul li a {
-        font-size: 1.1rem;   /* slightly bigger for mobile */
-        display: block;
-        padding: 5px 0;
+        font-size: 1rem;
+        display: inline-block;
     }
 }
