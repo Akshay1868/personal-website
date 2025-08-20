@@ -238,20 +238,7 @@ nav ul li a {
 body {
     padding-top: 60px; /* To prevent content from hiding behind sticky nav */
 }
-/* Hide nav links on mobile */
-@media (max-width: 768px) {
-    nav ul {
-        display: none; /* Hide links */
-        flex-direction: column;
-        background: white;
-        width: 100%;
-        padding: 10px 0;
-    }
 
-    nav.active ul {
-        display: flex; /* Show links when nav is active */
-    }
-}
 /* Ensure nav is always visible */
 body {
     padding-top: 60px; /* To prevent content from hiding behind sticky nav */
